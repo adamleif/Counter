@@ -278,7 +278,12 @@ def script_load(settings):
 
     # re-create counters based on the new value of N
     global counters
-    counters = {i: Driver() for i in range(N)}
+    counters = {i:Driver() for i in range(N)}
+
+    # re-create data_holders with the new value of N
+    global data_holders
+    data_holders = {i:{j:HotkeyDataHolder() for j in range(3)} for i in 
+                    range(N)}
 
     for c in counters:
         counters[c].counter = S.obs_data_get_int(settings, f"counter_{c}")
